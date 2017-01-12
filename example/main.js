@@ -19,7 +19,7 @@ app.on('ready', function () {
     label: 'Develop',
     submenu: Menu.buildFromTemplate([
       {
-        label: 'Inspet Element',
+        label: 'Inspect Element',
         accelerator: 'CmdOrCtrl+Shift+C',
         click () {
           let focusedWin = BrowserWindow.getFocusedWindow();
