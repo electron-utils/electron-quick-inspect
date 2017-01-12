@@ -1,7 +1,7 @@
 {
   "name": "electron-quick-inspect",
-  "version": "1.0.0",
-  "description": "Platform detection for Electron and Web Browser",
+  "version": "1.0.1",
+  "description": "Quickly inspect an element at mouse position via `webContents.inspectElement(x,y)`",
   "main": "index.js",
   "scripts": {
     "start": "node run.js"
