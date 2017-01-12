@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>main2all</title>
+    <style>
+      body {
+        font-size: 12px;
+        font-family: -apple-system,BlinkMacSystemFont,'Helvetica Neue','Segoe UI','Oxygen','Ubuntu','Cantarell','Open Sans',sans-serif;
+
+        color: #bdbdbd;
+        background-color: #333;
+      }
+
+      div.webview-wrapper {
+        margin: 5px;
+        border: 1px solid #888;
+        display: block;
+        position: relative;
+        min-width: 100px;
+        min-height: 100px;
+      }
+
+      span {
+        color: #09f;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Electron Quick Inspect</h1>
+    <div>Press <span>Ctlr/Command + Shift + c</span> to start inspect.</div>
+
+    <h3><code class="highlighter-rouge">contents.inspectElement(x, y)</code></h3>
+    <ul>
+      <li><code>x</code> Integer</li>
+      <li><code>y</code> Integer</li>
+    </ul>
+    <p>Starts inspecting element at position (<code>x</code>, <code>y</code>).</p>
+
+    <h3>You can also inspect webview element</h3>
+    <div class="webview-wrapper">
+      <webview id="view" src="http://electron.atom.io"
+        nodeintegration
+        disablewebsecurity
+        autosize="on"
+      ></webview>
+    </div>
+
+    <script>
+      require('../index.js');
+    </script>
+  </body>
+</html>

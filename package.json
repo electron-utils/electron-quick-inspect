@@ -1,0 +1,29 @@
+{
+  "name": "electron-quick-inspect",
+  "version": "1.0.0",
+  "description": "Platform detection for Electron and Web Browser",
+  "main": "index.js",
+  "scripts": {
+    "start": "node run.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/electron-utils/electron-quick-inspect.git"
+  },
+  "keywords": [
+    "Electron",
+    "Platform"
+  ],
+  "author": "jwu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/electron-utils/electron-quick-inspect/issues"
+  },
+  "homepage": "https://github.com/electron-utils/electron-quick-inspect",
+  "devDependencies": {
+    "electron": "^1.4.14"
+  },
+  "dependencies": {
+    "electron-platform": "^1.1.0"
+  }
+}
