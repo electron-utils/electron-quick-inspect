@@ -14,7 +14,7 @@ Quickly inspect an element at mouse position via `webContents.inspectElement(x,y
 This is similar to Chrome's inspect element tools. You can achieve it by several ways such as:
 
   - open the devtools and click the icon ![devtools icon](https://cloud.githubusercontent.com/assets/174891/21879224/229b8c22-d8d2-11e6-8dbc-4179653e74d5.png)
-  - open the devtools and press ctrl/command + shift + c
+  - open the devtools and press `ctrl/command + shift + c`
   - call `browserWindow.debugger.sendCommand('DevToolsAPI.enterInspectElementMode()')` in the main process when devtools opened.
   
 But all these 3 methods needs you open the devtools first.
