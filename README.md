@@ -46,7 +46,7 @@ Even better, you can add a accelerator to quickly start it by registering a menu
 
 ```javascript
 const {app, BrowserWindow, Menu, MenuItem} = require('electron');
-const quickInspect = require('../index.js');
+const quickInspect = require('electron-quick-inspect');
 
 let win;
 
