@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/electron-utils/electron-quick-inspect",
   "devDependencies": {
-    "electron": "^1.4.15"
+    "electron": "^1.6.2"
   },
   "dependencies": {
     "electron-platform": "^1.2.0"
