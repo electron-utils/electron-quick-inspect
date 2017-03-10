@@ -4,7 +4,7 @@
   "description": "Quickly inspect an element at mouse position via `webContents.inspectElement(x,y)`",
   "main": "index.js",
   "scripts": {
-    "start": "node run.js"
+    "start": "electron"
   },
   "repository": {
     "type": "git",
