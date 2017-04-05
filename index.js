@@ -2,6 +2,7 @@
 
 const {remote} = require('electron');
 const platform = require('electron-platform');
+const domtoimage = require('dom-to-image');
 
 if ( platform.isMainProcess ) {
   module.exports = {
@@ -61,7 +62,7 @@ function _elementFromPoint ( x, y ) {
 
 function _mousemove ( event ) {
   event.preventDefault();
-  event.stopPropagation();
+  event.stopImmediatePropagation();
 
   _maskEL.remove();
 
@@ -90,54 +91,57 @@ function _mousemove ( event ) {
 
 function _mousedown ( event ) {
   event.preventDefault();
-  event.stopPropagation();
+  event.stopImmediatePropagation();
 
   _inspectOFF ();
 
-  // inspect webview element (open webview's devtools instead)
-  let el = document.elementFromPoint( event.clientX, event.clientY );
-  let webviewEL = _webviewEL(el);
-  if ( webviewEL ) {
-    webviewEL.openDevTools();
-    if ( webviewEL.devToolsWebContents ) {
-      webviewEL.devToolsWebContents.focus();
+  if (event.button === 0 ) {
+    // inspect webview element (open webview's devtools instead)
+    let el = document.elementFromPoint(event.clientX, event.clientY);
+    let webviewEL = _webviewEL(el);
+    if (webviewEL) {
+      webviewEL.openDevTools();
+      if (webviewEL.devToolsWebContents) {
+        webviewEL.devToolsWebContents.focus();
+      }
+      return;
     }
-    return;
-  }
 
-  // inspect normal element
-  let x = event.clientX;
-  let y = event.clientY;
+    // inspect normal element
+    let x = event.clientX;
+    let y = event.clientY;
 
-  let win = remote.getCurrentWindow();
-  if ( !win ) {
-    console.warn(`Failed to inspect at ${x}, ${y}, cannot find the window.` );
-    return;
-  }
-  win.webContents.inspectElement(x, y);
+    let win = remote.getCurrentWindow();
+    if (!win) {
+      console.warn(`Failed to inspect at ${x}, ${y}, cannot find the window.`);
+      return;
+    }
+    win.webContents.inspectElement(x, y);
 
-  if ( win.devToolsWebContents ) {
-    win.devToolsWebContents.focus();
+    if (win.devToolsWebContents) {
+      win.devToolsWebContents.focus();
+    }
   }
 }
 
 function _keydown ( event ) {
   event.preventDefault();
-  event.stopPropagation();
+  event.stopImmediatePropagation();
 
+  // ECS
   if ( event.which === 27 ) {
     _inspectOFF ();
   }
 }
 
 function _inspectOFF () {
+  window.removeEventListener('mousedown', _mousedown, true);
+  window.removeEventListener('mousemove', _mousemove, true);
+  window.removeEventListener('keydown', _keydown, true);
+
   _inspecting = false;
   _maskEL.remove();
   _maskEL = null;
-
-  window.removeEventListener('mousemove', _mousemove, true);
-  window.removeEventListener('mousedown', _mousedown, true);
-  window.removeEventListener('keydown', _keydown, true);
 }
 
 function _inspectON () {
@@ -175,7 +179,7 @@ function _inspectON () {
     document.body.appendChild(_maskEL);
   }
 
-  window.addEventListener('mousemove', _mousemove, true);
   window.addEventListener('mousedown', _mousedown, true);
+  window.addEventListener('mousemove', _mousemove, true);
   window.addEventListener('keydown', _keydown, true);
 }

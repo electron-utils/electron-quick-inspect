@@ -21,9 +21,10 @@
   },
   "homepage": "https://github.com/electron-utils/electron-quick-inspect",
   "devDependencies": {
-    "electron": "^1.6.2"
+    "electron": "^1.6.5"
   },
   "dependencies": {
+    "dom-to-image": "^2.5.2",
     "electron-platform": "^1.2.0"
   }
 }
