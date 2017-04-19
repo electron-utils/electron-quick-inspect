@@ -2,7 +2,6 @@
 
 const {remote} = require('electron');
 const platform = require('electron-platform');
-const domtoimage = require('dom-to-image');
 
 if ( platform.isMainProcess ) {
   module.exports = {
